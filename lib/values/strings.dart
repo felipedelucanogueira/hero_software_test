@@ -7,10 +7,12 @@ abstract class Strings {
 
   //register and login
   static const nameHint = 'Nome';
+  static const loginButton = 'Entrar';
   static const emailHint = 'Email';
   static const passwordHint = 'Senha';
   static const cellphoneHint = 'Telefone';
   static const registryHint = 'Codigo de Registro';
+  static const logoutButton = 'Sair';
 
   static const confirmPasswordHint = 'Confirmar senha';
   static const register = 'Cadastre-se';
