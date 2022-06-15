@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:hero_software_test/values/strings.dart';
 
 import '../../values/colors.dart';
 import '../login_screen/login_controller.dart';
@@ -37,7 +39,47 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.blackBackground,
-      body: Container(),
+      body: SizedBox.expand(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Spacer(),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.12,
+              child: SvgPicture.asset('assets/images/logo.svg'),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.0224,
+            ),
+            RichText(
+              text: TextSpan(
+                text: Strings.chronos.toUpperCase(),
+                style: TextStyle(
+                  fontSize: MediaQuery.of(context).size.height * 0.036,
+                ),
+                children: [
+                  const TextSpan(
+                    text: ' ',
+                  ),
+                  TextSpan(
+                    text: Strings.partners.toUpperCase(),
+                    style: TextStyle(
+                        fontSize: MediaQuery.of(context).size.height * 0.036,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            ),
+            const Spacer(),
+            const Text(Strings.splashFooter,
+                style: TextStyle(
+                  fontSize: 12,
+                  color: AppColors.white,
+                )),
+          ],
+        ),
+      ),
     );
   }
 }
