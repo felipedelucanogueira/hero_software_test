@@ -1,10 +1,10 @@
-class CreateUser {
-  CreateUser({
-    this.name,
-    this.email,
-    this.phone,
+class Register {
+  Register({
+    required this.name,
+    required this.email,
+    required this.phone,
     this.registry,
-    this.password,
+    required this.password,
   });
 
   String? name;

@@ -27,10 +27,12 @@ class _LoginScreenState extends State<LoginScreen> {
             TextFormField(
               controller: _emailController,
               decoration: const InputDecoration(
-                  hintText: Strings.emailHint,
-                  hintStyle: TextStyle(color: AppColors.white),
-                  enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: AppColors.white))),
+                hintText: Strings.emailHint,
+                hintStyle: TextStyle(color: AppColors.white),
+                enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.white),
+                ),
+              ),
               style: const TextStyle(fontSize: 20),
             ),
             TextFormField(
@@ -63,7 +65,17 @@ class _LoginScreenState extends State<LoginScreen> {
                 }
               },
               child: const Text(Strings.loginButton),
-            )
+            ),
+            TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/register');
+                },
+                child: const Text(
+                  Strings.register,
+                  style: TextStyle(
+                      color: AppColors.white,
+                      decoration: TextDecoration.underline),
+                )),
           ],
         ),
       ),
