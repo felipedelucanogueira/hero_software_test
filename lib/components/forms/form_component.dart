@@ -26,14 +26,6 @@ class _CreateAccountFormComponentState extends State<RegisterFormComponent> {
   final _confirmPasswordController = TextEditingController();
   final _controller = RegisterController();
 
-  var registry = '';
-  var name = '';
-  var phone = '';
-  var email = '';
-  var password = '';
-  var confirmPassword = '';
-  var _isVisible = true;
-
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -50,7 +42,6 @@ class _CreateAccountFormComponentState extends State<RegisterFormComponent> {
               decoration: Decorations.inputDecoration(
                 hintText: Strings.nameHint,
               ),
-              onSaved: (value) => name = value!,
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.012,
@@ -67,7 +58,6 @@ class _CreateAccountFormComponentState extends State<RegisterFormComponent> {
               decoration: Decorations.inputDecoration(
                 hintText: Strings.emailHint,
               ),
-              onSaved: (value) => email = value!,
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.012,
@@ -80,7 +70,6 @@ class _CreateAccountFormComponentState extends State<RegisterFormComponent> {
               decoration: Decorations.inputDecoration(
                 hintText: Strings.phoneHint,
               ),
-              onSaved: (value) => phone = value!,
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.012,
@@ -91,36 +80,22 @@ class _CreateAccountFormComponentState extends State<RegisterFormComponent> {
               decoration: Decorations.inputDecoration(
                 hintText: Strings.registryHint,
               ),
-              onSaved: (value) => registry = value!,
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.012,
             ),
             TextFormField(
-              validator: Validatorless.required('Strings.emptyPassword'),
-              style: TextStyle(color: AppColors.white.withOpacity(.7)),
-              obscureText: !_isVisible,
+              validator: Validatorless.required(Strings.emptyPassword),
+              style: const TextStyle(color: AppColors.white),
               controller: _passwordController,
-              decoration: Decorations.inputDecoration(
-                hintText: Strings.passwordHint,
-                sufixIcon:
-                    _isVisible ? Icons.remove_red_eye : Icons.visibility_off,
-                onPressed: () {
-                  setState(
-                    () {
-                      _isVisible = !_isVisible;
-                    },
-                  );
-                },
-              ),
-              onSaved: (value) => password = value!,
+              decoration:
+                  Decorations.inputDecoration(hintText: Strings.passwordHint),
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.012,
             ),
             TextFormField(
               style: TextStyle(color: AppColors.white.withOpacity(.7)),
-              obscureText: !_isVisible,
               validator: Validatorless.multiple([
                 Validators.compare(
                     _passwordController, Strings.differentPasswords),
@@ -129,17 +104,7 @@ class _CreateAccountFormComponentState extends State<RegisterFormComponent> {
               controller: _confirmPasswordController,
               decoration: Decorations.inputDecoration(
                 hintText: Strings.confirmPasswordHint,
-                sufixIcon:
-                    _isVisible ? Icons.remove_red_eye : Icons.visibility_off,
-                onPressed: () {
-                  setState(
-                    () {
-                      _isVisible = !_isVisible;
-                    },
-                  );
-                },
               ),
-              onSaved: (value) => confirmPassword = value!,
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.058,

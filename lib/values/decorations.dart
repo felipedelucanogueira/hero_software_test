@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'colors.dart';
 
 abstract class Decorations {
-  static InputDecoration inputDecoration(
-      {String? hintText, IconData? sufixIcon, VoidCallback? onPressed}) {
+  static InputDecoration inputDecoration({
+    String? hintText,
+  }) {
     return InputDecoration(
       hintText: hintText,
       hintStyle: const TextStyle(color: AppColors.white),

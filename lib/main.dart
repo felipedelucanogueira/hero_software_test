@@ -23,6 +23,7 @@ class _InitialRouteState extends State<InitialRoute> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         inputDecorationTheme: const InputDecorationTheme(
           contentPadding: EdgeInsets.all(0),

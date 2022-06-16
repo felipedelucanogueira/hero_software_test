@@ -14,7 +14,7 @@ class ForgotPasswordScreen extends StatefulWidget {
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   final TextEditingController _emailController = TextEditingController();
   final ForgotPasswordController _controller = ForgotPasswordController();
-  var email = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +43,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     borderSide: BorderSide(color: AppColors.white),
                   ),
                 ),
-                onSubmitted: (value) => email = value,
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.04),
               SizedBox(
