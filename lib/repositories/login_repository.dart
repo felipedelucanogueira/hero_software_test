@@ -31,10 +31,6 @@ class LoginRepository {
 
   Future<bool> isLoggedIn() async {
     final token = await _storage.read(key: 'token');
-    if (token == null) {
-      return Future.value(false);
-    } else {
-      return Future.value(true);
-    }
+    return token != null;
   }
 }

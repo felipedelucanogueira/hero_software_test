@@ -14,7 +14,7 @@ class Logo extends StatelessWidget {
       children: [
         SvgPicture.asset(
           'assets/images/logo.svg',
-          height: MediaQuery.of(context).size.height * 0.08,
+          height: MediaQuery.of(context).size.height * 0.065,
         ),
         RichText(
           text: TextSpan(

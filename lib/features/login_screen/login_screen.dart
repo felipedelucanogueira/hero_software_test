@@ -67,15 +67,27 @@ class _LoginScreenState extends State<LoginScreen> {
               child: const Text(Strings.loginButton),
             ),
             TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/register');
-                },
-                child: const Text(
-                  Strings.register,
-                  style: TextStyle(
-                      color: AppColors.white,
-                      decoration: TextDecoration.underline),
-                )),
+              onPressed: () {
+                Navigator.pushNamed(context, '/forgot-password');
+              },
+              child: const Text(
+                Strings.forgotPassword,
+                style: TextStyle(
+                    color: AppColors.white,
+                    decoration: TextDecoration.underline),
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/register');
+              },
+              child: const Text(
+                Strings.register,
+                style: TextStyle(
+                    color: AppColors.white,
+                    decoration: TextDecoration.underline),
+              ),
+            ),
           ],
         ),
       ),

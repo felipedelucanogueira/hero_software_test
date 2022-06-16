@@ -22,6 +22,7 @@ abstract class Strings {
   static const cellphoneHint = 'Telefone';
   static const differentPasswords = "Senhas não conferem";
   static const invalidEmail = "E-mail inválido";
+  static const sucessfulSentEmail = "Email enviado com Sucesso";
 
   static const registryHint = 'Codigo de Registro';
   static const logoutButton = 'Sair';

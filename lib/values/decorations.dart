@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hero_software_test/values/strings.dart';
 
 import 'colors.dart';
 
