@@ -78,7 +78,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     },
                     child: Text(
                       Strings.resetPasswordButton.toUpperCase(),
-                      style: const TextStyle(color: Colors.white),
+                      style: const TextStyle(color: AppColors.black),
                     ),
                   ),
                 ),
