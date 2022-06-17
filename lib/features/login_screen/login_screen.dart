@@ -22,99 +22,107 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: AppColors.blackBackground,
       body: Form(
         key: _formKey,
         child: Padding(
           padding: EdgeInsets.symmetric(
-              horizontal: MediaQuery.of(context).size.width * 0.03),
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width * 0.01),
-            child: Column(
-              children: [
-                const Spacer(),
-                const Logo(),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.06,
-                ),
-                TextFormField(
-                  validator: Validatorless.multiple([
-                    Validatorless.email(Strings.invalidEmail),
-                    Validatorless.required(Strings.emptyEmail)
-                  ]),
-                  controller: _emailController,
-                  decoration: const InputDecoration(
-                    hintText: Strings.emailHint,
-                    hintStyle: TextStyle(color: AppColors.white),
-                    enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: AppColors.white),
-                    ),
+              horizontal: MediaQuery.of(context).size.width * 0.04),
+          child: Column(
+            children: [
+              const Spacer(),
+              const Logo(),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.10,
+              ),
+              TextFormField(
+                validator: Validatorless.multiple([
+                  Validatorless.email(Strings.invalidEmail),
+                  Validatorless.required(Strings.emptyEmail)
+                ]),
+                controller: _emailController,
+                decoration: const InputDecoration(
+                  hintText: Strings.emailHint,
+                  hintStyle: TextStyle(color: AppColors.white),
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.white),
                   ),
-                  style: const TextStyle(fontSize: 20, color: AppColors.white),
                 ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.03,
-                ),
-                TextFormField(
-                  controller: _passwordController,
-                  obscureText: _isVisible,
-                  validator: Validatorless.required(Strings.emptyPassword),
-                  decoration: InputDecoration(
-                    contentPadding: EdgeInsets.zero,
-                    hintText: Strings.passwordHint,
-                    suffixIcon: IconButton(
-                      icon: _isVisible
-                          ? const Icon(Icons.visibility_off)
-                          : const Icon(Icons.visibility),
-                      color: AppColors.white,
-                      onPressed: () {
-                        setState(() {
-                          _isVisible = !_isVisible;
-                        });
-                      },
-                    ),
-                    suffixIconConstraints: const BoxConstraints(
-                        minWidth: 0, minHeight: 20, maxHeight: 35),
-                    hintStyle: const TextStyle(color: AppColors.white),
-                    enabledBorder: const UnderlineInputBorder(
-                      borderSide: BorderSide(color: AppColors.white),
-                    ),
+                style: const TextStyle(fontSize: 20, color: AppColors.white),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.03,
+              ),
+              TextFormField(
+                controller: _passwordController,
+                obscureText: _isVisible,
+                validator: Validatorless.required(Strings.emptyPassword),
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.zero,
+                  hintText: Strings.passwordHint,
+                  suffixIcon: IconButton(
+                    icon: _isVisible
+                        ? const Icon(Icons.visibility_off)
+                        : const Icon(Icons.visibility),
+                    color: AppColors.white,
+                    onPressed: () {
+                      setState(() {
+                        _isVisible = !_isVisible;
+                      });
+                    },
                   ),
-                  style: const TextStyle(fontSize: 20, color: AppColors.white),
+                  suffixIconConstraints: const BoxConstraints(
+                      minWidth: 0, minHeight: 20, maxHeight: 35),
+                  hintStyle: const TextStyle(color: AppColors.white),
+                  enabledBorder: const UnderlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.white),
+                  ),
                 ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.06,
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 1,
-                  height: MediaQuery.of(context).size.height * 0.04,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(40),
-                    child: ElevatedButton(
-                      onPressed: () async {
-                        if (_formKey.currentState!.validate()) {
-                          try {
-                            await _controller.login(
+                style: const TextStyle(fontSize: 20, color: AppColors.white),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.06,
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 1,
+                height: MediaQuery.of(context).size.height * 0.045,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(40),
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      if (_formKey.currentState!.validate()) {
+                        await _controller
+                            .login(
                                 email: _emailController.text,
-                                password: _passwordController.text);
-                            if (await _controller.isLoggedIn()) {
-                              Navigator.pushNamed(context, '/home');
-                            }
-                          } catch (e) {
+                                password: _passwordController.text)
+                            .catchError(
+                          (e) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(e.toString()),
                               ),
                             );
-                          }
+                          },
+                        );
+                        if (await _controller.isLoggedIn()) {
+                          Navigator.pushNamed(context, '/home');
                         }
-                      },
-                      child: const Text(Strings.loginButton),
+                      }
+                    },
+                    child: Text(
+                      Strings.loginButton.toUpperCase(),
+                      style: const TextStyle(color: AppColors.black),
                     ),
                   ),
                 ),
-                TextButton(
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.03,
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.055,
+                child: TextButton(
                   onPressed: () {
                     Navigator.pushNamed(context, '/forgot-password');
                   },
@@ -123,7 +131,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: TextStyle(color: AppColors.white),
                   ),
                 ),
-                TextButton(
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.055,
+                child: TextButton(
                   onPressed: () {
                     Navigator.pushNamed(context, '/register');
                   },
@@ -132,11 +143,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: TextStyle(color: AppColors.white),
                   ),
                 ),
-                const Spacer(
-                  flex: 3,
-                )
-              ],
-            ),
+              ),
+              const Spacer(
+                flex: 3,
+              )
+            ],
           ),
         ),
       ),

@@ -18,6 +18,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         iconTheme: const IconThemeData(color: AppColors.primary),
         elevation: 0.0,
@@ -43,6 +44,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     borderSide: BorderSide(color: AppColors.white),
                   ),
                 ),
+                style: const TextStyle(color: AppColors.white),
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.04),
               SizedBox(
@@ -67,14 +69,16 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                       } catch (e) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
-                            content: Text(e.toString()),
+                            content: Text(
+                              e.toString(),
+                            ),
                           ),
                         );
                       }
                     },
                     child: Text(
                       Strings.resetPasswordButton.toUpperCase(),
-                      style: const TextStyle(color: Colors.black),
+                      style: const TextStyle(color: Colors.white),
                     ),
                   ),
                 ),

@@ -44,7 +44,7 @@ class _CreateAccountFormComponentState extends State<RegisterFormComponent> {
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.012,
+              height: MediaQuery.of(context).size.height * 0.028,
             ),
             TextFormField(
               validator: Validatorless.multiple(
@@ -53,14 +53,14 @@ class _CreateAccountFormComponentState extends State<RegisterFormComponent> {
                   Validatorless.email(Strings.invalidEmail),
                 ],
               ),
-              style: TextStyle(color: AppColors.white.withOpacity(.7)),
+              style: const TextStyle(color: AppColors.white),
               controller: _emailController,
               decoration: Decorations.inputDecoration(
                 hintText: Strings.emailHint,
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.012,
+              height: MediaQuery.of(context).size.height * 0.028,
             ),
             TextFormField(
               validator: Validatorless.required(Strings.emptyPhone),
@@ -72,7 +72,7 @@ class _CreateAccountFormComponentState extends State<RegisterFormComponent> {
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.012,
+              height: MediaQuery.of(context).size.height * 0.028,
             ),
             TextFormField(
               style: const TextStyle(color: AppColors.white),
@@ -82,7 +82,7 @@ class _CreateAccountFormComponentState extends State<RegisterFormComponent> {
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.012,
+              height: MediaQuery.of(context).size.height * 0.028,
             ),
             TextFormField(
               validator: Validatorless.required(Strings.emptyPassword),
@@ -92,10 +92,10 @@ class _CreateAccountFormComponentState extends State<RegisterFormComponent> {
                   Decorations.inputDecoration(hintText: Strings.passwordHint),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.012,
+              height: MediaQuery.of(context).size.height * 0.028,
             ),
             TextFormField(
-              style: TextStyle(color: AppColors.white.withOpacity(.7)),
+              style: const TextStyle(color: AppColors.white),
               validator: Validatorless.multiple([
                 Validators.compare(
                     _passwordController, Strings.differentPasswords),
@@ -151,7 +151,7 @@ class _CreateAccountFormComponentState extends State<RegisterFormComponent> {
                   },
                   child: Text(
                     Strings.register.toUpperCase(),
-                    style: const TextStyle(color: Colors.black),
+                    style: const TextStyle(color: AppColors.black),
                   ),
                 ),
               ),

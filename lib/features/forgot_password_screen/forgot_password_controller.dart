@@ -5,7 +5,9 @@ class ForgotPasswordController {
   static final Dio dio = Dio();
   final ForgotPasswordRepository _repository = ForgotPasswordRepository(dio);
 
-  Future<void> forgotPassword({required String email}) async {
+  Future<void> forgotPassword({
+    required String email,
+  }) async {
     await _repository.forgotPassword(email);
   }
 }

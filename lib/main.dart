@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hero_software_test/features/forgot_password_screen/forgot_password_screen.dart';
 import 'package:hero_software_test/features/register_screen/register_screen.dart';
@@ -9,7 +10,14 @@ import 'features/splash_screen/splash_screen.dart';
 import 'values/colors.dart';
 
 void main() {
-  runApp(const InitialRoute());
+  WidgetsFlutterBinding.ensureInitialized();
+
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]).then(
+    (_) => runApp(
+      const InitialRoute(),
+    ),
+  );
 }
 
 class InitialRoute extends StatefulWidget {
